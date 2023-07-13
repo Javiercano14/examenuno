@@ -1,5 +1,7 @@
 package org.example.ejercicios;
 
+import org.example.validacion.UsuarioValidacion;
+
 public class Usuario {
 
     private Integer id;
@@ -11,6 +13,8 @@ public class Usuario {
     private String correo;
 
     private Integer ubicacion;
+
+    private UsuarioValidacion validacion = new UsuarioValidacion()
 
     public Usuario( ) {
     }
@@ -44,7 +48,13 @@ public class Usuario {
     }
 
     public void setNombres(String nombres) {
-        this.nombres = nombres;
+        try{
+            this.validacion.validarNombres(nombres)
+            this.nombres=nombres;
+        }
+        catch (Exception error){
+            System.out.println(error.getMessage());
+        }
     }
 
     public String getCorreo( ) {
@@ -52,7 +62,12 @@ public class Usuario {
     }
 
     public void setCorreo(String correo) {
-        this.correo = correo;
+        try{
+            this.validacion.validarCorreo(correo);
+            this.correo=correo;
+        }catch (Exception error){
+            System.out.println(error.getMessage());
+        }
     }
 
     public Integer getUbicacion( ) {
@@ -60,6 +75,11 @@ public class Usuario {
     }
 
     public void setUbicacion(Integer ubicacion) {
-        this.ubicacion = ubicacion;
+        try{
+            this.validacion.validarUbicacion(ubicacion);
+            this.ubicacion=ubicacion;
+        } catch (Exception error){
+            System.out.println(error.getMessage());
+        }
     }
 }
