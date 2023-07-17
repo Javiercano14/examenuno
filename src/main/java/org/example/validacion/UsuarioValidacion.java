@@ -7,17 +7,17 @@ import java.util.regex.Pattern;
 
 public class UsuarioValidacion {
 
-    protected Util util=new Util();
+    protected Util util = new Util();
 
     // métodos ordinarios para validar datos
-    public Boolean validarNombre(String nombres) throws Exception {
-        String expresionRegular = "^[a-zA-Z]+$";
+    public Boolean validarNombres(String nombres) throws Exception {
+        String expresionRegular = "^[a-zA-Z ]+$";
 
 
         if (!util.buscarCoincidencia(expresionRegular, nombres)) {
-            throw new Exception("Señor usuario su nombre solo puede tener letras ");
+            throw new Exception("Señor usuario su nombre solo puede tener letras");
         } else if (nombres.length() < 10) {
-            throw new Exception("Señor reviser la cantidad de caracteres es muy pequeña");
+            throw new Exception("Señor revise la cantidad de caracteres es muy pequeña ");
         } else {
             return true;
         }
@@ -28,24 +28,22 @@ public class UsuarioValidacion {
 
 
         if (!util.buscarCoincidencia(expresionRegular, correo)) {
-            throw new Exception("Señor usuario su nombre solo puede tener letras ");
-        }
-        else {
+            throw new Exception("Señor usuario el correo ingresado no es valido");
+        } else {
             return true;
         }
     }
 
-    public Boolean validarUbicacion(Integer ubicacion) throws Exception{
-        if (ubicacion.equals(1)||ubicacion.equals(2)||ubicacion.equals(3)||ubicacion.equals(4)){
+    public Boolean validarUbicacion(Integer ubicacion) throws Exception {
+        if (ubicacion.equals(1) || ubicacion.equals(2) || ubicacion.equals(3) || ubicacion.equals(4)) {
             return true;
 
-        }
-        else{
+        } else {
             throw new Exception("La zona ingresada no es valida");
         }
     }
 
-    }
+}
 
 
 

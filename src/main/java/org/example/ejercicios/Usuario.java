@@ -14,7 +14,7 @@ public class Usuario {
 
     private Integer ubicacion;
 
-    private UsuarioValidacion validacion = new UsuarioValidacion()
+    private UsuarioValidacion validacion = new UsuarioValidacion();
 
     public Usuario( ) {
     }
@@ -49,7 +49,7 @@ public class Usuario {
 
     public void setNombres(String nombres) {
         try{
-            this.validacion.validarNombres(nombres)
+            this.validacion.validarNombres(nombres);
             this.nombres=nombres;
         }
         catch (Exception error){
@@ -81,5 +81,17 @@ public class Usuario {
         } catch (Exception error){
             System.out.println(error.getMessage());
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                "id=" + id +
+                ", documento='" + documento + '\'' +
+                ", nombres='" + nombres + '\'' +
+                ", correo='" + correo + '\'' +
+                ", ubicacion=" + ubicacion +
+                ", validacion=" + validacion +
+                '}';
     }
 }
