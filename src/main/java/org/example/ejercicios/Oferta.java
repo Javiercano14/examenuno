@@ -1,5 +1,8 @@
 package org.example.ejercicios;
 
+import org.example.validacion.LocalValidacion;
+import org.example.validacion.OfertaValidacion;
+
 import java.time.LocalDate;
 import java.util.Date;
 
@@ -17,6 +20,8 @@ public class Oferta {
     private Double costoPersona;
 
     private Integer idLocal;
+
+    private OfertaValidacion validacion3 = new OfertaValidacion();
 
     public Oferta( ) {
     }
@@ -44,8 +49,15 @@ public class Oferta {
     }
 
     public void setTitulo(String titulo) {
-        this.titulo = titulo;
+        try{
+            this.validacion3.validarTitulo(titulo);
+            this.titulo=titulo;
+        }
+        catch (Exception error){
+            System.out.println(error.getMessage());
+        }
     }
+
 
     public String getDescripcion( ) {
         return descripcion;
@@ -60,7 +72,14 @@ public class Oferta {
     }
 
     public void setFechaInicio(LocalDate fechaInicio) {
-        this.fechaInicio = fechaInicio;
+        try{
+            this.validacion3.validarDiferenciaEntreFechas(fechaInicio, this.fechaFin);
+            this.fechaInicio=fechaInicio;
+        }
+        catch (Exception error){
+            System.out.println(error.getMessage());
+        }
+
     }
 
     public LocalDate getFechaFin( ) {
@@ -68,7 +87,13 @@ public class Oferta {
     }
 
     public void setFechaFin(LocalDate fechaFin) {
-        this.fechaFin = fechaFin;
+        try{
+            this.validacion3.validarDiferenciaEntreFechas(fechaFin, fechaInicio);
+            this.fechaFin=fechaFin;
+        }
+        catch (Exception error){
+            System.out.println(error.getMessage());
+        }
     }
 
     public Double getCostoPersona( ) {

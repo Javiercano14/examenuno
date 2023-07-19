@@ -16,6 +16,16 @@ public class Util {
         }
 
     }
+    public Boolean buscarCoincidencia2(String expresionRegular,String cadena) {
+        Pattern patron = Pattern.compile(expresionRegular);
+        Matcher coincidencia2 = patron.matcher(cadena);
+
+        if (!coincidencia2.matches()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
 
-}
+    }

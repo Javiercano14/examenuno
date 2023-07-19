@@ -42,7 +42,7 @@ public class Local {
 
     public void setNit(String nit) {
         try{
-            this.validacion2.ValidarNit(nit);
+            this.validacion2.validarNit(nit);
             this.nit=nit;
         }
         catch (Exception error){

@@ -1,5 +1,8 @@
 package org.example.ejercicios;
 
+import org.example.validacion.ReservaValidacion;
+import org.example.validacion.UsuarioValidacion;
+
 import java.time.LocalDate;
 
 public class Reserva {
@@ -13,6 +16,8 @@ public class Reserva {
     private Double costoTotal;
 
     private LocalDate fechaReserva;
+
+    private ReservaValidacion validacion4 = new ReservaValidacion();
 
     public Reserva( ) {
     }
@@ -62,6 +67,7 @@ public class Reserva {
     }
 
     public void setFechaReserva(LocalDate fechaReserva) {
-        this.fechaReserva = fechaReserva;
+        try { this.fechaReserva = fechaReserva;}
+
     }
 }
