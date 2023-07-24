@@ -24,12 +24,18 @@ public class Main {
         System.out.print("Digita tus nombres y apellidos: ");
         usuario.setNombres(teclado.nextLine());
 
+        System.out.print("Digita el número de tu ubicación (1-4), Centro, Sur, Este, Oeste: ");
+        usuario.setUbicacion(teclado.nextInt());
+        System.out.println();
+        teclado.nextLine();
+
         System.out.print("Digita tu correo electronico: ");
         usuario.setCorreo(teclado.nextLine());
 
 
         System.out.print("Digite el nit: ");
         local.setNit(teclado.nextLine());
+
 
         System.out.print("Digite el nombre de la Empresa: ");
         local.setNombre(teclado.nextLine());

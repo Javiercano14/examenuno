@@ -4,6 +4,7 @@ import org.example.validacion.LocalValidacion;
 import org.example.validacion.OfertaValidacion;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 public class Oferta {
@@ -12,6 +13,7 @@ public class Oferta {
     private String titulo;
 
     private String descripcion;
+
 
     private LocalDate fechaInicio;
 
@@ -71,10 +73,12 @@ public class Oferta {
         return fechaInicio;
     }
 
-    public void setFechaInicio(LocalDate fechaInicio) {
+    public void setFechaInicio(String fecha) {
         try{
-            this.validacion3.validarDiferenciaEntreFechas(fechaInicio, this.fechaFin);
-            this.fechaInicio=fechaInicio;
+            this.validacion3.validarFormatoFecha(fecha);
+            DateTimeFormatter formatoFecha = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            LocalDate fechaInicialLocalDate = LocalDate.parse(fecha, formatoFecha);
+            this.fechaInicio=fechaInicialLocalDate;
         }
         catch (Exception error){
             System.out.println(error.getMessage());
@@ -86,22 +90,32 @@ public class Oferta {
         return fechaFin;
     }
 
-    public void setFechaFin(LocalDate fechaFin) {
+    public void setFechaFin(String fechaFin) {
         try{
-            this.validacion3.validarDiferenciaEntreFechas(fechaFin, fechaInicio);
-            this.fechaFin=fechaFin;
-        }
-        catch (Exception error){
-            System.out.println(error.getMessage());
+            this.validacion3.validarDiferenciaEntreFechas(fechaFin);
+            DateTimeFormatter formatoFecha1 = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            LocalDate fechaConvertida = LocalDate.parse(fechaFin, formatoFecha1);
+            this.validacion3.validarDiferenciaEntreFechas(this.fechaInicio,fechaConvertida);
+            this.fechaFin= fechaConvertida;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }
+
 
     public Double getCostoPersona( ) {
         return costoPersona;
     }
 
     public void setCostoPersona(Double costoPersona) {
-        this.costoPersona = costoPersona;
+        try{
+            this.validacion3.validarCosto(costoPersona);
+            this.costoPersona=costoPersona;
+        }
+        catch (Exception error)
+        {
+            System.out.println(error.getMessage());
+        }
     }
 
     public Integer getIdLocal( ) {
@@ -111,4 +125,6 @@ public class Oferta {
     public void setIdLocal(Integer idLocal) {
         this.idLocal = idLocal;
     }
+
+
 }
