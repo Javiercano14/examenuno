@@ -2,6 +2,7 @@ package org.example;
 
 import org.example.ejercicios.Local;
 import org.example.ejercicios.Oferta;
+import org.example.ejercicios.Reserva;
 import org.example.ejercicios.Usuario;
 
 import java.time.LocalDate;
@@ -14,6 +15,7 @@ public class Main {
         Scanner teclado = new Scanner(System.in);
         Usuario usuario= new Usuario();
         Oferta oferta= new Oferta();
+        Reserva reserva= new Reserva();
         Local local= new Local();
 
 
@@ -25,21 +27,21 @@ public class Main {
         System.out.print("Digita tu correo electronico: ");
         usuario.setCorreo(teclado.nextLine());
 
-        System.out.println("Digita tu ubicación (1-4) Centro, Sur, Este, Norte");
-        usuario.setUbicacion(teclado.nextInt());
 
-
-
-
-        System.out.println("Digite el nit: ");
+        System.out.print("Digite el nit: ");
         local.setNit(teclado.nextLine());
 
-        System.out.println("Digite el nombre de la Empresa: ");
+        System.out.print("Digite el nombre de la Empresa: ");
         local.setNombre(teclado.nextLine());
 
-        System.out.println("Ingrese Fecha");
+        System.out.print("Digita el titulo de la oferta: ");
         oferta.setTitulo(teclado.nextLine());
 
+        System.out.print("Digite el costo: ");
+        oferta.setCostoPersona(teclado.nextDouble());
+
+        System.out.println("Digita la cantidad de personas: ");
+        reserva.setIdUsuario(teclado.nextInt());
 
     }
 }

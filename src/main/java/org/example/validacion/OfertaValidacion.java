@@ -14,7 +14,7 @@ public class OfertaValidacion {
     public Boolean validarTitulo(String titulo) throws Exception {
         String expresionRegular = "^[a-zA-Z ]+$";
 
-        if (!util.buscarCoincidencia(expresionRegular, titulo)) {
+        if (!util.buscarCoincidencia3(expresionRegular, titulo)) {
             throw new Exception("Señor usuario su nombre solo puede tener letras");
         } else if (titulo.length() < 20) {
             throw new Exception("Señor revise la cantidad de caracteres es muy pequeña ");
@@ -25,8 +25,8 @@ public class OfertaValidacion {
 
     public Boolean validarFormatoFecha(String fecha) throws Exception{
         String expresionRegular = "^(0?[1-9]|[12][0-9]|3[01])/(0?[1-9]|1[0-2])/\\\\d{4}$";
-        //calidar que el string fecha tenga el patron ("dd/mm/yyyy")
-        if (!util.buscarCoincidencia(expresionRegular, fecha)) {
+
+        if (!util.buscarCoincidencia3(expresionRegular, fecha)) {
             throw new Exception("Formato de fecha invalido");
         }else{
             return true;

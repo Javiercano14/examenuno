@@ -7,14 +7,16 @@ public class ReservaValidacion {
     protected Util util = new Util();
 
     public Boolean validarFormatoFecha2(String fechaReserva) throws Exception {
-        String expresionRegular = "^(0?[1-9]|[12][0-9]|3[01])/(0?[1-9]|1[0-2])/\\\\d{4}$";
-        //calidar que el string fecha tenga el patron ("dd/mm/yyyy")
-        if (!util.buscarCoincidencia(expresionRegular, fechaReserva)) {
-            throw new Exception("Formato de fecha invalido");
+        String expresionRegular = "^(0?[1-9]|[12][0-9]|3[01])/(0?[1-9]|1[0-2])/\\d{4}$";
+
+        if (!fechaReserva.matches(expresionRegular)) {
+            throw new Exception("Formato de fecha inválido");
         } else {
             return true;
         }
     }
+
+
 
 
     public Boolean validarReserva (Integer idUsuario) throws Exception{

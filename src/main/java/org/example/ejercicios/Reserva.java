@@ -19,7 +19,7 @@ public class Reserva {
 
     private ReservaValidacion validacion4 = new ReservaValidacion();
 
-    public Reserva( ) {
+    public Reserva() {
     }
 
     public Reserva(Integer id, Integer idUsuario, Integer idOferta, Double costoTotal, LocalDate fechaReserva) {
@@ -30,7 +30,7 @@ public class Reserva {
         this.fechaReserva = fechaReserva;
     }
 
-    public Integer getId( ) {
+    public Integer getId() {
         return id;
     }
 
@@ -38,15 +38,21 @@ public class Reserva {
         this.id = id;
     }
 
-    public Integer getIdUsuario( ) {
+    public Integer getIdUsuario() {
         return idUsuario;
     }
 
     public void setIdUsuario(Integer idUsuario) {
-        this.idUsuario = idUsuario;
+        try{
+            this.validacion4.validarReserva(idUsuario);
+            this.idUsuario=idUsuario;
+        }
+        catch (Exception error){
+            System.out.println(error.getMessage());
+        }
     }
 
-    public Integer getIdOferta( ) {
+    public Integer getIdOferta() {
         return idOferta;
     }
 
@@ -54,7 +60,7 @@ public class Reserva {
         this.idOferta = idOferta;
     }
 
-    public Double getCostoTotal( ) {
+    public Double getCostoTotal() {
         return costoTotal;
     }
 
@@ -62,12 +68,17 @@ public class Reserva {
         this.costoTotal = costoTotal;
     }
 
-    public LocalDate getFechaReserva( ) {
+    public LocalDate getFechaReserva() {
         return fechaReserva;
     }
 
     public void setFechaReserva(LocalDate fechaReserva) {
-        try { this.fechaReserva = fechaReserva;}
+        try {
+            this.validacion4.validarFormatoFecha2(String.valueOf(fechaReserva));
+            this.fechaReserva = fechaReserva;
 
+        } catch (Exception error) {
+            System.out.println(error.getMessage());
+        }
     }
 }
