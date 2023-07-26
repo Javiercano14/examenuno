@@ -72,14 +72,13 @@ public class Reserva {
         return fechaReserva;
     }
 
-    public void setFechaReserva(LocalDate fechaReserva) {
+    public void setFechaReserva(String fechaReserva) {
         try {
             this.validacion4.validarFormatoFecha2(fechaReserva);
-            DateTimeFormatter formatofecha2 = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-            LocalDate fechaConvertida1 = LocalDate.parse(fechaReserva, formatofecha2);
-            this.fechaReserva = fechaConvertida1;
-        } catch (Exception error) {
+        }catch (Exception error){
             System.out.println(error.getMessage());
         }
     }
-}
+
+    }
+
