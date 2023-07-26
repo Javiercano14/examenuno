@@ -17,6 +17,9 @@ public class Main {
         Oferta oferta= new Oferta();
         Reserva reserva= new Reserva();
         Local local= new Local();
+        String fechaInicio;
+        String fechaFin;
+        String fechaReserva;
 
 
         System.out.println("***Bienvenido***");
@@ -43,8 +46,17 @@ public class Main {
         System.out.print("Digita el titulo de la oferta: ");
         oferta.setTitulo(teclado.nextLine());
 
+        System.out.println("digite por favor la fecha de inicio de la siguiente manera (dia/mes/año)");
+        oferta.setFechaInicio(teclado.nextLine());
+
+        System.out.println("Digite por favor la fecha de fin de la siguiente manera (dia/mes/año)");
+        oferta.setFechaFin(teclado.nextLine());
+
         System.out.print("Digite el costo: ");
         oferta.setCostoPersona(teclado.nextDouble());
+
+        System.out.println("Digitar la fecha de la reserva, asegurate que tenga el siguiente formato (dia/mes/año)");
+
 
         System.out.println("Digita la cantidad de personas: ");
         reserva.setIdUsuario(teclado.nextInt());

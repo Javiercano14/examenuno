@@ -34,7 +34,7 @@ public class OfertaValidacion {
 
     }
 
-    public Boolean validarDiferenciaEntreFechas(String fechaIncio, LocalDate fechaFin) throws Exception {
+    public Boolean validarDiferenciaEntreFechas(LocalDate fechaIncio, LocalDate fechaFin) throws Exception {
         if (fechaFin.isBefore(fechaIncio)) {
             throw new Exception("Señor usuario la fecha de inicio no puede ser mayor que la fecha de fin");
         }else {
@@ -51,6 +51,9 @@ public class OfertaValidacion {
             throw new Exception("Señor usuario el costo no puede ser negativo");
         }
 
+    }
+
+    public void validarDiferenciaEntreFechas(String fechaFin) {
     }
 }
 

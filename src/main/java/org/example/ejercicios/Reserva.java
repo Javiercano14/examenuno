@@ -4,6 +4,7 @@ import org.example.validacion.ReservaValidacion;
 import org.example.validacion.UsuarioValidacion;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class Reserva {
 
@@ -43,11 +44,10 @@ public class Reserva {
     }
 
     public void setIdUsuario(Integer idUsuario) {
-        try{
+        try {
             this.validacion4.validarReserva(idUsuario);
-            this.idUsuario=idUsuario;
-        }
-        catch (Exception error){
+            this.idUsuario = idUsuario;
+        } catch (Exception error) {
             System.out.println(error.getMessage());
         }
     }
@@ -74,9 +74,10 @@ public class Reserva {
 
     public void setFechaReserva(LocalDate fechaReserva) {
         try {
-            this.validacion4.validarFormatoFecha2(String.valueOf(fechaReserva));
-            this.fechaReserva = fechaReserva;
-
+            this.validacion4.validarFormatoFecha2(fechaReserva);
+            DateTimeFormatter formatofecha2 = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            LocalDate fechaConvertida1 = LocalDate.parse(fechaReserva, formatofecha2);
+            this.fechaReserva = fechaConvertida1;
         } catch (Exception error) {
             System.out.println(error.getMessage());
         }
