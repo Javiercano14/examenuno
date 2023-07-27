@@ -55,6 +55,7 @@ public class Main {
         System.out.print("Digite el costo: ");
         oferta.setCostoPersona(teclado.nextDouble());
 
+        teclado.nextLine();
         System.out.println("Digitar la fecha de la reserva, asegurate que tenga el siguiente formato (dia/mes/año)");
         reserva.setFechaReserva(teclado.nextLine());
 
