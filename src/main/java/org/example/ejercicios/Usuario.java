@@ -1,8 +1,9 @@
 package org.example.ejercicios;
 
+import org.example.utilidades.Util;
 import org.example.validacion.UsuarioValidacion;
 
-public class Usuario {
+public abstract class Usuario {
 
     private Integer id;
 
@@ -14,7 +15,11 @@ public class Usuario {
 
     private Integer ubicacion;
 
+    private final Integer costoAnual= 200000;
+
     private UsuarioValidacion validacion = new UsuarioValidacion();
+
+    private Util utiles= new Util();
 
     public Usuario( ) {
     }
@@ -70,6 +75,10 @@ public class Usuario {
         }
     }
 
+    public Integer getCostoAnual(){
+        return costoAnual;
+    }
+
     public Integer getUbicacion( ) {
         return ubicacion;
     }
@@ -94,4 +103,6 @@ public class Usuario {
                 ", validacion=" + validacion +
                 '}';
     }
+
+    public abstract Double calcularAnualidad();
 }

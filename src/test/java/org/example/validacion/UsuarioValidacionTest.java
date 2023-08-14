@@ -33,4 +33,10 @@ class UsuarioValidacionTest {
 
     }
 
+    @Test
+    public void validarNombreUsuarioIncorrectoPorDatosNumericos(){
+
+        String nombreNumerico= "12345";
+        Assertions.assertThrows(Exception.class()->usuarioValidacion.validarNombres(nombreNumerico));
+    }
 }

@@ -13,7 +13,12 @@ public class Main {
     public static void main(String[] args) {
 
         Scanner teclado = new Scanner(System.in);
-        Usuario usuario= new Usuario();
+        Usuario usuario= new Usuario() {
+            @Override
+            public Double calcularAnualidad() {
+                return null;
+            }
+        };
         Oferta oferta= new Oferta();
         Reserva reserva= new Reserva();
         Local local= new Local();

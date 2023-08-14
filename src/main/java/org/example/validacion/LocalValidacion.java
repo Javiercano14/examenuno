@@ -1,5 +1,6 @@
 package org.example.validacion;
 
+import org.example.utilidades.Mensajes;
 import org.example.utilidades.Util;
 
 import static java.lang.String.*;
@@ -12,9 +13,9 @@ public class LocalValidacion {
         String expresionRegular = "^[0-9]+$";
 
         if (!util.buscarCoincidencia(expresionRegular, nit)) {
-            throw new Exception("Señor usuario, el NIT solo puede contener números");
+            throw new Exception(Mensajes.NIT_INVALIDO.getMensaje());
         } else if (nit.length() != 10) {
-            throw new Exception("Señor usuario, la cantidad de caracteres del NIT es muy pequeña");
+            throw new Exception(Mensajes.NIT_PEQUENO.getMensaje());
         } else {
             return true;
         }
@@ -25,10 +26,10 @@ public class LocalValidacion {
         String expresionRegular = "^[a-zA-Z ]+$";
 
         if (!util.buscarCoincidencia(expresionRegular,nombre)){
-            throw  new Exception("Solo se permite caracteres");
+            throw  new Exception(Mensajes.SOLO_CARACTERES.getMensaje());
         }
         if (nombre.length() > 30) {
-            throw new Exception("Número de caracteres invalido ");
+            throw new Exception(Mensajes.CARCATERES_INVALIDOS.getMensaje());
         } else {
             return true;
         }

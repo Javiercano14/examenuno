@@ -1,6 +1,7 @@
 package org.example.validacion;
 
 import org.example.ejercicios.Local;
+import org.example.utilidades.Mensajes;
 import org.example.utilidades.Util;
 
 import java.security.PublicKey;
@@ -15,9 +16,9 @@ public class OfertaValidacion {
         String expresionRegular = "^[a-zA-Z ]+$";
 
         if (!util.buscarCoincidencia(expresionRegular, titulo)) {
-            throw new Exception("Señor usuario su nombre solo puede tener letras");
+            throw new Exception(Mensajes.SOLO_LETRAS.getMensaje());
         } else if ( titulo.length() >20) {
-            throw new Exception("El titulo no debe de sobre pasar los 20 carcateres");
+            throw new Exception(Mensajes.VEINTE_CARACTERES.getMensaje());
         } else {
             return true;
         }
@@ -27,7 +28,7 @@ public class OfertaValidacion {
         String expresionRegular = "^(0?[1-9]|[12][0-9]|3[01])/(0?[1-9]|1[0-2])/\\\\d{4}$";
 
         if (!util.buscarCoincidencia(expresionRegular, fecha)) {
-            throw new Exception("Formato de fecha invalido");
+            throw new Exception(Mensajes.FECHA_INVALIDA.getMensaje());
         }else{
             return true;
         }
@@ -36,7 +37,7 @@ public class OfertaValidacion {
 
     public Boolean validarDiferenciaEntreFechas(LocalDate fechaIncio, LocalDate fechaFin) throws Exception {
         if (fechaFin.isBefore(fechaIncio)) {
-            throw new Exception("Señor usuario la fecha de inicio no puede ser mayor que la fecha de fin");
+            throw new Exception(Mensajes.FECHA_MAYOR.getMensaje());
         }else {
             return true;
         }
@@ -48,7 +49,7 @@ public class OfertaValidacion {
         if(costoPersona >=0){
             return true;
         } else {
-            throw new Exception("Señor usuario el costo no puede ser negativo");
+            throw new Exception(Mensajes.COSTO_NEGATIVO.getMensaje());
         }
 
     }
