@@ -37,6 +37,38 @@ class UsuarioValidacionTest {
     public void validarNombreUsuarioIncorrectoPorDatosNumericos(){
 
         String nombreNumerico= "12345";
-        Assertions.assertThrows(Exception.class()->usuarioValidacion.validarNombres(nombreNumerico));
+        Assertions.assertThrows(Exception.class,()->usuarioValidacion.validarNombres(nombreNumerico));
+    }
+
+    @Test
+    void correoElectronicoValido(){
+        String correoValido="Javier@gmail.com";
+        Assertions.assertDoesNotThrow(()->{usuarioValidacion.validarCorreo(correoValido);});
+
+    }
+
+    @Test
+    void correoElectronicoInvalido(){
+        String correoNumerico= "123123.com";
+        String correoInvalido= "javier.pan.com";
+        Assertions.assertThrows(Exception.class,()->usuarioValidacion.validarCorreo(correoInvalido));
+        Assertions.assertThrows(Exception.class,()->usuarioValidacion.validarCorreo(correoNumerico));
+
+    }
+
+    @Test
+    void ubicacionCorrecta(){
+        String ubicacionValida="4";
+        Assertions.assertDoesNotThrow(()->usuarioValidacion.validarUbicacion(Integer.valueOf(ubicacionValida)));
+
+
+    }
+
+    @Test
+    void ubicacionIncorrecta(){
+        String ubicacionInvalida="5";
+        String ubicacionInvalidaPorString= "hola";
+        Assertions.assertThrows(Exception.class,()->usuarioValidacion.validarUbicacion(Integer.valueOf(ubicacionInvalida)));
+        Assertions.assertThrows(Exception.class,()->usuarioValidacion.validarUbicacion(Integer.valueOf(ubicacionInvalidaPorString)));
     }
 }

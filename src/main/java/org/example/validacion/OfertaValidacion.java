@@ -25,7 +25,7 @@ public class OfertaValidacion {
     }
 
     public Boolean validarFormatoFecha(String fecha) throws Exception{
-        String expresionRegular = "^(0?[1-9]|[12][0-9]|3[01])/(0?[1-9]|1[0-2])/\\\\d{4}$";
+        String expresionRegular = "^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[0-2])/\\d{4}$";
 
         if (!util.buscarCoincidencia(expresionRegular, fecha)) {
             throw new Exception(Mensajes.FECHA_INVALIDA.getMensaje());
