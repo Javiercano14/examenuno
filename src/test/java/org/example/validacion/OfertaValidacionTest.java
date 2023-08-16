@@ -43,5 +43,11 @@ class OfertaValidacionTest {
 
     }
 
+    @Test
+    public void validarDiferenciaFechasCorrectas(){
+
+
+    }
+
 
 }
