@@ -1,5 +1,6 @@
 package org.example.validacion;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -16,8 +17,43 @@ class ReservaValidacionTest {
 
     @Test
     public void validarFormatoFechaCorrecto(){
+        LocalDate fechaCorrecta = LocalDate.parse("29/08/2002");
+        Assertions.assertDoesNotThrow(() -> {
+            return this.reservaValidacion.validarFormatoFecha2(fechaCorrecta);
+        });
+    }
 
+    @Test
+    public void formatoFechaIncorrecta() {
+        String invalidoPorCaracteres = "uno/ocho/dosmilquince";
+        String invalidoPorMalEscrito = "23-03-2023";
+        Assertions.assertThrows(Exception.class, () -> {
+            this.reservaValidacion.validarFormatoFecha2(invalidoPorCaracteres);
+        });
+        Assertions.assertThrows(Exception.class, () -> {
+            this.reservaValidacion.validarFormatoFecha2(invalidoPorMalEscrito);
+        });
+    }
 
+    @Test
+    void validacionReservaCorrecta() {
+        Integer numeroPersonas = 2;
+        Assertions.assertDoesNotThrow(() -> {
+            return this.reservaValidacion.validarReserva(numeroPersonas);
+        });
+    }
+
+    @Test
+    void valdacionIncorrectaReservas() {
+        Integer sobrePasaLoPermitido = 9;
+        Integer numeroNoPermitido = -2;
+        Assertions.assertThrows(Exception.class, () -> {
+            this.reservaValidacion.validarReserva(sobrePasaLoPermitido);
+        });
+        Assertions.assertThrows(Exception.class, () -> {
+            this.reservaValidacion.validarReserva(numeroNoPermitido);
+        });
+    }
     }
 
 }
