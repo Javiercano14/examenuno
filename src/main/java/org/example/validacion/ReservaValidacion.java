@@ -23,7 +23,7 @@ public class ReservaValidacion {
 
 
     public Boolean validarReserva (Integer idUsuario) throws Exception{
-        if(idUsuario< 4){
+        if(idUsuario>0 && idUsuario<4){
             return true;
         } else {
             throw new Exception(Mensajes.RESERVA_LIMITE.getMensaje());

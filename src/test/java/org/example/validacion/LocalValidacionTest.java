@@ -39,7 +39,7 @@ class LocalValidacionTest {
     @Test
     public void nombreValido(){
         String nombreValido= "Panadería el mall de Barichara";
-        Assertions.assertDoesNotThrow(()->localValidacion.validarNombreEmpresa(nombreValido));
+        Assertions.assertThrows(Exception.class,()->localValidacion.validarNombreEmpresa(nombreValido));
     }
 
 

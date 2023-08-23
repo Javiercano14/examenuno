@@ -17,9 +17,9 @@ class ReservaValidacionTest {
 
     @Test
     public void validarFormatoFechaCorrecto(){
-        LocalDate fechaCorrecta = LocalDate.parse("29/08/2002");
+        String fechaCorrecta = "22/08/2023";
         Assertions.assertDoesNotThrow(() -> {
-            return this.reservaValidacion.validarFormatoFecha2(fechaCorrecta);
+            this.reservaValidacion.validarFormatoFecha2(fechaCorrecta);
         });
     }
 
@@ -56,4 +56,3 @@ class ReservaValidacionTest {
     }
     }
 
-}
